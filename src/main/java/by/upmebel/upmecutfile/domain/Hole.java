@@ -1,13 +1,13 @@
 package by.upmebel.upmecutfile.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "holes")
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,6 +15,7 @@ import lombok.Setter;
 public class Hole {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private double diameter;
@@ -25,10 +26,24 @@ public class Hole {
 
     private int drillingExitSpeed;
 
-    private String coordinateByLength;
+    private double coordinateByLength;
 
-    private String coordinateByBreadth;
+    private double coordinateByBreadth;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "element_side_id", referencedColumnName = "id")
     private ElementSide elementSide;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hole hole = (Hole) o;
+        return Double.compare(diameter, hole.diameter) == 0 && Double.compare(depth, hole.depth) == 0 && drillingEntrySpeed == hole.drillingEntrySpeed && drillingExitSpeed == hole.drillingExitSpeed && Double.compare(coordinateByLength, hole.coordinateByLength) == 0 && Double.compare(coordinateByBreadth, hole.coordinateByBreadth) == 0 && Objects.equals(id, hole.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, diameter, depth, drillingEntrySpeed, drillingExitSpeed, coordinateByLength, coordinateByBreadth);
+    }
 }
