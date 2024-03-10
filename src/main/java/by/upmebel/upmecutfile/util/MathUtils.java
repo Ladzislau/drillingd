@@ -3,7 +3,6 @@ package by.upmebel.upmecutfile.util;
 import by.upmebel.upmecutfile.domain.MathOperation;
 import by.upmebel.upmecutfile.domain.MathOperator;
 import by.upmebel.upmecutfile.exception.InvalidPatternException;
-import org.springframework.lang.NonNull;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
