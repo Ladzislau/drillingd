@@ -5,7 +5,7 @@ spring:
       mode: always
 
   datasource:
-    url: jdbc:postgresql://database:5432/drilling_dev
+    url: jdbc:postgresql://localhost:5432/drilling_dev
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
@@ -21,6 +21,8 @@ spring:
         format_sql: true
         default_batch_fetch_size: 20
         jdbc.batch_size: 20
+#        generate_statistics: true
+#        order_updates: true
 
   jackson:
     visibility:
@@ -31,3 +33,7 @@ spring:
 
 server:
   port: 8080
+
+springdoc:
+  swagger-ui:
+    path: "/swagger-ui.html"
