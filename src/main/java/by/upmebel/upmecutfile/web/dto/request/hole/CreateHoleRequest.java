@@ -1,18 +1,9 @@
 package by.upmebel.upmecutfile.web.dto.request.hole;
 
-import by.upmebel.upmecutfile.validation.annotation.FixedListSize;
-import by.upmebel.upmecutfile.validation.annotation.ParallelogramSides;
-import by.upmebel.upmecutfile.web.dto.request.side.ElementSideRequest;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 
-import java.util.List;
-
-//todo – Валидировать входные данные на деление на ноль
 public record CreateHoleRequest(
 
         @Schema(
