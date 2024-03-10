@@ -1,8 +1,6 @@
 package by.upmebel.upmecutfile.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.Constraint;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.List;

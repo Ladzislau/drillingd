@@ -11,10 +11,6 @@ import java.util.Optional;
 @Repository
 public interface ElementSideRepository extends JpaRepository<ElementSide, Long> {
 
-    @Query("SELECT s from ElementSide s " +
-            "LEFT JOIN FETCH s.holes h " +
-            "WHERE s.element.id = :elementId")
-    List<ElementSide> findAllByElementId(Long elementId);
 
     @Query("SELECT s from ElementSide s " +
             "JOIN s.element e " +

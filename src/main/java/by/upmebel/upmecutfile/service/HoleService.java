@@ -4,8 +4,6 @@ import by.upmebel.upmecutfile.web.dto.request.hole.CreateHoleRequest;
 import by.upmebel.upmecutfile.web.dto.request.hole.UpdateHoleRequest;
 import by.upmebel.upmecutfile.web.dto.response.hole.HoleInfo;
 
-import java.util.List;
-
 public interface HoleService {
     HoleInfo createHole(Long elementId, Long sideId, CreateHoleRequest request);
 
