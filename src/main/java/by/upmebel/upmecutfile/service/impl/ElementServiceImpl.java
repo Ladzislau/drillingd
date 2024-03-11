@@ -6,6 +6,7 @@ import by.upmebel.upmecutfile.exception.ElementNotFoundException;
 import by.upmebel.upmecutfile.mapper.ElementMapper;
 import by.upmebel.upmecutfile.repository.ElementRepository;
 import by.upmebel.upmecutfile.repository.ElementSideRepository;
+import by.upmebel.upmecutfile.repository.HoleRepository;
 import by.upmebel.upmecutfile.service.ElementService;
 import by.upmebel.upmecutfile.util.ElementSideUtils;
 import by.upmebel.upmecutfile.web.dto.request.element.CreateElementRequest;
@@ -30,6 +31,7 @@ public class ElementServiceImpl implements ElementService {
 
     private final ElementRepository elementRepository;
     private final ElementSideRepository elementSideRepository;
+    private final HoleRepository holeRepository;
     private final ElementMapper elementMapper;
 
     @Override
@@ -91,6 +93,7 @@ public class ElementServiceImpl implements ElementService {
         updatedElement.setCreatedAt(oldElement.getCreatedAt());
 
         elementRepository.save(updatedElement);
+        holeRepository.deleteByElementId(elementId);
         return elementMapper.map(updatedElement);
     }
 
