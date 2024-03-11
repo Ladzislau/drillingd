@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "696eca83-f4f6-480a-98d2-fb6cf0a03ead",
+		"name": "upme-drilling",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27706545"
+	},
+	"item": [
+		{
+			"name": "create element",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/elements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"elements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get elements page",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "get element",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "update element",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"elem4\",\n  \"sides\": [\n    {\n      \"length\": 30,\n      \"breadth\": 20\n    },\n    {\n      \"length\": 20,\n      \"breadth\": 15\n    },\n    {\n      \"length\": 30,\n      \"breadth\": 15\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/elements/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"elements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete element",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/elements/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"elements",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get side",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "create hole",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/elements/1/sides/1/holes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"elements",
+						"1",
+						"sides",
+						"1",
+						"holes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update hole",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"diameter\": 2,\n  \"depth\": 1,\n  \"drillingEntrySpeed\": 1,\n  \"drillingExitSpeed\": 1,\n  \"coordinateByLength\": \"38 + H\",\n  \"coordinateByBreadth\": \"15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/elements/1/sides/1/holes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"elements",
+						"1",
+						"sides",
+						"1",
+						"holes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete hole",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/elements/1/sides/1/holes/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"elements",
+						"1",
+						"sides",
+						"1",
+						"holes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get hole",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
