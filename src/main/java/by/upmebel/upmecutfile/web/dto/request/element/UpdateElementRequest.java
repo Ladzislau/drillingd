@@ -12,8 +12,8 @@ import java.util.List;
 
 public record UpdateElementRequest(
         @Schema(
-                description = "Название ошибки",
-                example = "Ошибка X"
+                description = "Название детали",
+                example = "ОМПК18-c"
         )
         @NotEmpty(message = "У детали должно быть название")
         String name,
