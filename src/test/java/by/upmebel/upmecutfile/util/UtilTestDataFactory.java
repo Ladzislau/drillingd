@@ -111,7 +111,7 @@ public class UtilTestDataFactory {
         var secondSide1 = new ElementSide(50, 20);
 
         var firstSide2 = new ElementSide(-5, 17);
-        var secondSide2 = new ElementSide(24, -5);
+        var secondSide2 = new ElementSide(24, 17);
 
         var firstSide3 = new ElementSide(0, 10);
         var secondSide3 = new ElementSide(0, 0);
