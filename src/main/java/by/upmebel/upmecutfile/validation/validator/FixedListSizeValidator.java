@@ -21,7 +21,7 @@ public class FixedListSizeValidator implements ConstraintValidator<FixedListSize
     @Override
     public boolean isValid(List<?> list, ConstraintValidatorContext constraintValidatorContext) {
         for (int allowedSize : allowedSizes) {
-            if (list.size() == allowedSize){
+            if (list.size() == allowedSize) {
                 return true;
             }
         }

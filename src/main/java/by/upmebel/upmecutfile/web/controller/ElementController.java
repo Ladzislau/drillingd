@@ -96,7 +96,7 @@ public class ElementController {
     )
     @GetMapping("/{elementId}/sides/{sideId}")
     public ResponseEntity<ElementSideInfo> getSide(@PathVariable("elementId") Long elementId,
-                                                   @PathVariable("sideId") Long sideId){
+                                                   @PathVariable("sideId") Long sideId) {
         ElementSideInfo response = elementSideService.getSideByIds(elementId, sideId);
         return ResponseEntity.ok(response);
     }

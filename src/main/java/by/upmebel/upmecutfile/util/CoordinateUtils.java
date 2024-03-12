@@ -17,13 +17,13 @@ public class CoordinateUtils {
         return Pattern.matches(NUMBER_REGEX, coordinate);
     }
 
-    public static String replaceParametersWithValues(String coordinate, ElementSide side, double height){
+    public static String replaceParametersWithValues(String coordinate, ElementSide side, double height) {
         return coordinate.toUpperCase().replace(LENGTH_ABBREVIATION, side.getLength() + "")
                 .replace(BREADTH_ABBREVIATION, side.getBreadth() + "")
                 .replace(HEIGHT_ABBREVIATION, height + "");
     }
 
-    public static boolean isCoordinatesValid(ElementSide side, Hole hole){
+    public static boolean isCoordinatesValid(ElementSide side, Hole hole) {
         double sideLength = side.getLength();
         double sideBreadth = side.getBreadth();
         double holeCoordinateByLength = hole.getCoordinateByLength();

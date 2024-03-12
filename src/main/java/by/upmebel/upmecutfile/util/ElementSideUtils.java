@@ -47,7 +47,7 @@ public class ElementSideUtils {
 
     public static double getHeightBySide(ElementSide side) {
         Element element = side.getElement();
-        if (element == null){
+        if (element == null) {
             return -1;
         }
 
@@ -82,7 +82,6 @@ public class ElementSideUtils {
 
         return clonedSides;
     }
-
 
 
 }

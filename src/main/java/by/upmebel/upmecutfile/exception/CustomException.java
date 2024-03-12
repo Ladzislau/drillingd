@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import java.util.Date;
 
 @Getter
-public class CustomException extends RuntimeException{
+public class CustomException extends RuntimeException {
 
     private HttpStatus status;
 

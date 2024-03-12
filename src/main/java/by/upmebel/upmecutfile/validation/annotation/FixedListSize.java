@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy= FixedListSizeValidator.class)
+@Constraint(validatedBy = FixedListSizeValidator.class)
 public @interface FixedListSize {
     String message() default "";
 

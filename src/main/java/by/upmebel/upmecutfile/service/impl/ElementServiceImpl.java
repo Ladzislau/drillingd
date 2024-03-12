@@ -9,8 +9,8 @@ import by.upmebel.upmecutfile.repository.ElementSideRepository;
 import by.upmebel.upmecutfile.repository.HoleRepository;
 import by.upmebel.upmecutfile.service.ElementService;
 import by.upmebel.upmecutfile.util.ElementSideUtils;
-import by.upmebel.upmecutfile.web.dto.request.element.CreateElementRequest;
-import by.upmebel.upmecutfile.web.dto.request.element.UpdateElementRequest;
+import by.upmebel.upmecutfile.web.dto.element.CreateElementRequest;
+import by.upmebel.upmecutfile.web.dto.element.UpdateElementRequest;
 import by.upmebel.upmecutfile.web.dto.response.element.ElementInfo;
 import by.upmebel.upmecutfile.web.dto.response.element.ElementsPageResponse;
 import lombok.RequiredArgsConstructor;
@@ -102,7 +102,7 @@ public class ElementServiceImpl implements ElementService {
         elementRepository.deleteById(elementId);
     }
 
-    private void completeMissingSides(List<ElementSide> sides){
+    private void completeMissingSides(List<ElementSide> sides) {
         if (sides.size() == 2) {
             ElementSide missingSide = ElementSideUtils.getMissingSide(sides.getFirst(), sides.getLast());
             sides.add(missingSide);

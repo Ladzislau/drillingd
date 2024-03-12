@@ -31,7 +31,7 @@ public class MathUtils {
             String operatorAsString = operators[i];
             MathOperator operator = MathOperator.PLUS;
 
-            if(!operatorAsString.isEmpty() || !operatorAsString.isBlank())
+            if (!operatorAsString.isEmpty() || !operatorAsString.isBlank())
                 operator = MathOperator.fromValue(operators[i]);
 
             operations.add(new MathOperation(operator, operand));
@@ -58,7 +58,7 @@ public class MathUtils {
         }
     }
 
-    public static double calculateOperationsResult(Queue<MathOperation> operations){
+    public static double calculateOperationsResult(Queue<MathOperation> operations) {
         if (operations == null || operations.isEmpty()) {
             return 0;
         }
@@ -69,7 +69,7 @@ public class MathUtils {
             double operand = operation.getOperand();
             MathOperator operator = operation.getMathOperator();
 
-            if(isHighPriorityOperation(operation)) {
+            if (isHighPriorityOperation(operation)) {
                 double previousOperand = operandsStack.pop();
                 operand = performOperation(operator, previousOperand, operand);
             }
@@ -89,11 +89,11 @@ public class MathUtils {
         return result;
     }
 
-    public static boolean isHighPriorityOperation(MathOperation operation){
+    public static boolean isHighPriorityOperation(MathOperation operation) {
         return operation.getMathOperator() == MathOperator.MULTIPLY || operation.getMathOperator() == MathOperator.DIVIDE;
     }
 
-    public static boolean isMathExpression(String input){
+    public static boolean isMathExpression(String input) {
         return Pattern.matches(MATH_EXPRESSION_REGEX, input);
     }
 }

@@ -19,7 +19,7 @@ public class ParallelogramSidesValidator implements ConstraintValidator<Parallel
     @Override
     public boolean isValid(List<ElementSideRequest> sides, ConstraintValidatorContext constraintValidatorContext) {
         int sidesCount = sides.size();
-        if (sidesCount != 2 && sidesCount != 3 && sidesCount != 6){
+        if (sidesCount != 2 && sidesCount != 3 && sidesCount != 6) {
             return false;
         }
 
@@ -33,21 +33,21 @@ public class ParallelogramSidesValidator implements ConstraintValidator<Parallel
 
         int dimensionsCount = dimensionsFrequency.size();
 
-        if (dimensionsCount < 1 || dimensionsCount > 3){
+        if (dimensionsCount < 1 || dimensionsCount > 3) {
             return false;
         }
 
-        if (sides.size() == 2){
+        if (sides.size() == 2) {
             return true;
         }
 
         Set<Integer> frequencySet = new HashSet<>(dimensionsFrequency.values());
 
-        if (frequencySet.size() == 1){
+        if (frequencySet.size() == 1) {
             double dimensionToCheck = sides.getFirst().length();
             int counter = 0;
             for (ElementSideRequest side : sides) {
-                if (side.breadth() == dimensionToCheck || side.length() == dimensionToCheck){
+                if (side.breadth() == dimensionToCheck || side.length() == dimensionToCheck) {
                     counter++;
                 }
             }
@@ -57,5 +57,5 @@ public class ParallelogramSidesValidator implements ConstraintValidator<Parallel
         return false;
     }
 
-    }
+}
 

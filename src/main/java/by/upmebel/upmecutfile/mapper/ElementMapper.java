@@ -1,8 +1,8 @@
 package by.upmebel.upmecutfile.mapper;
 
 import by.upmebel.upmecutfile.domain.Element;
-import by.upmebel.upmecutfile.web.dto.request.element.CreateElementRequest;
-import by.upmebel.upmecutfile.web.dto.request.element.UpdateElementRequest;
+import by.upmebel.upmecutfile.web.dto.element.CreateElementRequest;
+import by.upmebel.upmecutfile.web.dto.element.UpdateElementRequest;
 import by.upmebel.upmecutfile.web.dto.response.element.ElementInfo;
 import by.upmebel.upmecutfile.web.dto.response.element.ElementsPageResponse;
 import org.mapstruct.Mapper;
@@ -27,7 +27,7 @@ public interface ElementMapper {
 
     List<ElementInfo> map(List<Element> elements);
 
-    default ElementsPageResponse map(Page<Element> elementsPage){
+    default ElementsPageResponse map(Page<Element> elementsPage) {
         List<Element> elements = elementsPage.getContent();
         Pageable pageable = elementsPage.getPageable();
         int pageNumber = pageable.getPageNumber();

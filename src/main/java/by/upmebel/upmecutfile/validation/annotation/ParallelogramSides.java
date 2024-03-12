@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy= ParallelogramSidesValidator.class)
+@Constraint(validatedBy = ParallelogramSidesValidator.class)
 public @interface ParallelogramSides {
     String message() default "Из сторон нельзя составить параллелограмм";
 

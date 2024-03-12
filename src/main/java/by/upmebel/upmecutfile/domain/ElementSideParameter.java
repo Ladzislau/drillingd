@@ -2,9 +2,6 @@ package by.upmebel.upmecutfile.domain;
 
 import lombok.Getter;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Getter
 public enum ElementSideParameter {
 

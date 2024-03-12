@@ -47,7 +47,7 @@ public class HoleServiceImpl implements HoleService {
         double heightBySide = ElementSideUtils.getHeightBySide(relatedSide);
 
         Hole hole = holeMapper.map(request);
-        if (hole.getDepth() > heightBySide){
+        if (hole.getDepth() > heightBySide) {
             throw new InvalidParameterException("Невозможно добавить отверстие. Глубина превышает высоту детали");
         }
 
@@ -55,7 +55,7 @@ public class HoleServiceImpl implements HoleService {
         calculateAndSetCoordinates(hole, relatedSide, heightBySide, request.coordinateByLength(),
                 request.coordinateByBreadth());
 
-        if(!CoordinateUtils.isCoordinatesValid(relatedSide, hole)){
+        if (!CoordinateUtils.isCoordinatesValid(relatedSide, hole)) {
             throw new InvalidParameterException(("""
                     Координаты отверстия превышают размеры стороны.
                     Рассчитанная длина: %.1f
@@ -77,7 +77,7 @@ public class HoleServiceImpl implements HoleService {
         double heightBySide = ElementSideUtils.getHeightBySide(relatedSide);
 
         Hole updatedHole = holeMapper.map(request);
-        if (updatedHole.getDepth() > heightBySide){
+        if (updatedHole.getDepth() > heightBySide) {
             throw new InvalidParameterException("Невозможно обновить отверстие. Глубина превышает высоту детали");
         }
         updatedHole.setId(holeId);
@@ -86,7 +86,7 @@ public class HoleServiceImpl implements HoleService {
         calculateAndSetCoordinates(updatedHole, relatedSide, heightBySide, request.coordinateByLength(),
                 request.coordinateByBreadth());
 
-        if(!CoordinateUtils.isCoordinatesValid(relatedSide, updatedHole)){
+        if (!CoordinateUtils.isCoordinatesValid(relatedSide, updatedHole)) {
             throw new InvalidParameterException(("""
                     Координаты отверстия превышают размеры стороны.
                     Рассчитанная длина: %.1f
@@ -102,7 +102,7 @@ public class HoleServiceImpl implements HoleService {
         holeRepository.deleteById(holeId);
     }
 
-    private void calculateAndSetCoordinates(Hole hole, ElementSide side, double heightBySide, String coordinateByLength, String coordinateByBreadth){
+    private void calculateAndSetCoordinates(Hole hole, ElementSide side, double heightBySide, String coordinateByLength, String coordinateByBreadth) {
         double coordinateByLengthValue = calculateCoordinateValue(coordinateByLength, side, heightBySide);
         double coordinateByBreadthValue = calculateCoordinateValue(coordinateByBreadth, side, heightBySide);
 
@@ -110,12 +110,12 @@ public class HoleServiceImpl implements HoleService {
         hole.setCoordinateByBreadth(coordinateByBreadthValue);
     }
 
-    private double calculateCoordinateValue(String coordinate, ElementSide side, double height){
-        if(CoordinateUtils.isCoordinateNumeric(coordinate)){
+    private double calculateCoordinateValue(String coordinate, ElementSide side, double height) {
+        if (CoordinateUtils.isCoordinateNumeric(coordinate)) {
             return Double.parseDouble(coordinate);
         }
 
-        if (height == -1){
+        if (height == -1) {
             throw new ElementNotFoundException("Ошибка расчета координат отверстия. Детали, на которую вы хотите разместить отверстие, не существует");
         }
         String mathExpression = CoordinateUtils.replaceParametersWithValues(coordinate, side, height);

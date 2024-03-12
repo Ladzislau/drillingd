@@ -1,6 +1,5 @@
 package by.upmebel.upmecutfile.domain;
 
-
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -21,8 +20,8 @@ public enum MathOperator {
         this.value = value;
     }
 
-    public static MathOperator fromValue(String value){
-        if(BY_VALUE.isEmpty()){
+    public static MathOperator fromValue(String value) {
+        if (BY_VALUE.isEmpty()) {
             for (MathOperator operator : values()) {
                 BY_VALUE.put(operator.value, operator);
             }

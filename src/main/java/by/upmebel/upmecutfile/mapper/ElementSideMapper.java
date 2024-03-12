@@ -17,7 +17,7 @@ public interface ElementSideMapper {
     @Mapping(target = "element", ignore = true)
     ElementSide map(ElementSideRequest request);
 
-    @Mapping(target = "holes", source = "holes" )
+    @Mapping(target = "holes", source = "holes")
     ElementSideInfo map(ElementSide side);
 
     List<ElementSideInfo> map(List<ElementSide> sides);
