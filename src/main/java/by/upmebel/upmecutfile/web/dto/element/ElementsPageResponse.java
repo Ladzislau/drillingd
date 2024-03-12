@@ -1,4 +1,4 @@
-package by.upmebel.upmecutfile.web.dto.response.element;
+package by.upmebel.upmecutfile.web.dto.element;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -32,5 +32,5 @@ public record ElementsPageResponse(
         @Schema(
                 description = "Контент страницы (список деталей)"
         )
-        List<ElementInfo> elements) {
+        List<ElementResponse> elements) {
 }

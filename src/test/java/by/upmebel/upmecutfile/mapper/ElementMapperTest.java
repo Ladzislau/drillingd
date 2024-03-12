@@ -3,13 +3,13 @@ package by.upmebel.upmecutfile.mapper;
 import by.upmebel.upmecutfile.domain.Element;
 import by.upmebel.upmecutfile.domain.ElementSide;
 import by.upmebel.upmecutfile.domain.Hole;
-import by.upmebel.upmecutfile.web.dto.request.element.CreateElementRequest;
-import by.upmebel.upmecutfile.web.dto.request.element.UpdateElementRequest;
-import by.upmebel.upmecutfile.web.dto.request.side.ElementSideRequest;
-import by.upmebel.upmecutfile.web.dto.response.element.ElementInfo;
-import by.upmebel.upmecutfile.web.dto.response.element.ElementsPageResponse;
-import by.upmebel.upmecutfile.web.dto.response.hole.HoleInfo;
-import by.upmebel.upmecutfile.web.dto.response.side.ElementSideInfo;
+import by.upmebel.upmecutfile.web.dto.element.CreateElementRequest;
+import by.upmebel.upmecutfile.web.dto.element.ElementResponse;
+import by.upmebel.upmecutfile.web.dto.element.ElementsPageResponse;
+import by.upmebel.upmecutfile.web.dto.element.UpdateElementRequest;
+import by.upmebel.upmecutfile.web.dto.hole.HoleResponse;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideRequest;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideResponse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ class ElementMapperTest {
     ElementMapper elementMapper;
 
     @Test
-    void shouldReturnElementEntity_whenMap_givenCreateElementRequest(){
+    void shouldReturnElementEntity_whenMap_givenCreateElementRequest() {
         //given
         String elementName = "eto_element";
         var elementSideRequests = List.of(
@@ -59,7 +59,7 @@ class ElementMapperTest {
     }
 
     @Test
-    void shouldReturnElementEntity_whenMap_givenUpdateElementRequest(){
+    void shouldReturnElementEntity_whenMap_givenUpdateElementRequest() {
         //given
         String elementName = "eto_updated_element";
         var elementSideRequests = List.of(
@@ -81,7 +81,7 @@ class ElementMapperTest {
     }
 
     @Test
-    void shouldReturnElementInfo_whenMap_givenElementEntity(){
+    void shouldReturnElementInfo_whenMap_givenElementEntity() {
         //given
         Date createdAt = new Date();
         String elementName = "eto_element";
@@ -97,28 +97,28 @@ class ElementMapperTest {
                 new ElementSide(3L, 30, 18, null, null)
         );
         var expectedHoleInfos = List.of(
-                new HoleInfo(1L, 10d, 10d, 10,
+                new HoleResponse(1L, 10d, 10d, 10,
                         10, 10d, 10d),
-                new HoleInfo(2L, 20d, 20d, 20,
+                new HoleResponse(2L, 20d, 20d, 20,
                         20, 20d, 20d)
         );
         var expectedSideInfos = List.of(
-                new ElementSideInfo(1L, 30, 20, expectedHoleInfos),
-                new ElementSideInfo(2L, 20, 18, null),
-                new ElementSideInfo(3L, 30, 18,  null)
+                new ElementSideResponse(1L, 30, 20, expectedHoleInfos),
+                new ElementSideResponse(2L, 20, 18, null),
+                new ElementSideResponse(3L, 30, 18, null)
         );
         var element = new Element(1L, elementName, createdAt, sides);
-        ElementInfo expected = new ElementInfo(1L, elementName, createdAt, expectedSideInfos);
+        ElementResponse expected = new ElementResponse(1L, elementName, createdAt, expectedSideInfos);
 
         //when
-        ElementInfo actual = elementMapper.map(element);
+        ElementResponse actual = elementMapper.map(element);
 
         //then
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    void shouldReturnElementsPageResponse_whenMap_givenElementPage(){
+    void shouldReturnElementsPageResponse_whenMap_givenElementPage() {
         //given
         int pageNumber = 0;
         int pageSize = 2;
@@ -132,9 +132,9 @@ class ElementMapperTest {
                 new Element(3L, "eto_elem3", createdAt3, null)
         );
         var elementInfos = List.of(
-                new ElementInfo(1L, "eto_elem1", createdAt1, null),
-                new ElementInfo(2L, "eto_elem2", createdAt2, null),
-                new ElementInfo(3L, "eto_elem3", createdAt3, null)
+                new ElementResponse(1L, "eto_elem1", createdAt1, null),
+                new ElementResponse(2L, "eto_elem2", createdAt2, null),
+                new ElementResponse(3L, "eto_elem3", createdAt3, null)
         );
         Page<Element> elementsPage = new PageImpl<>(elements, pageable, elements.size());
         ElementsPageResponse expected = new ElementsPageResponse(pageNumber, pageSize,

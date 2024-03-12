@@ -1,12 +1,12 @@
-package by.upmebel.upmecutfile.web.dto.response.element;
+package by.upmebel.upmecutfile.web.dto.element;
 
-import by.upmebel.upmecutfile.web.dto.response.side.ElementSideInfo;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Date;
 import java.util.List;
 
-public record ElementInfo(
+public record ElementResponse(
         @Schema(
                 description = "ID детали",
                 example = "1"
@@ -27,6 +27,6 @@ public record ElementInfo(
         @Schema(
                 description = "Список сторон детали"
         )
-        List<ElementSideInfo> sides) {
+        List<ElementSideResponse> sides) {
 
 }

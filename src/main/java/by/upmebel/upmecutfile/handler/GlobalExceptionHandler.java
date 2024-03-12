@@ -1,8 +1,8 @@
 package by.upmebel.upmecutfile.handler;
 
 import by.upmebel.upmecutfile.exception.CustomException;
-import by.upmebel.upmecutfile.web.dto.response.error.ErrorResponse;
-import by.upmebel.upmecutfile.web.dto.response.error.ValidationErrorResponse;
+import by.upmebel.upmecutfile.web.dto.error.ErrorResponse;
+import by.upmebel.upmecutfile.web.dto.error.ValidationErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

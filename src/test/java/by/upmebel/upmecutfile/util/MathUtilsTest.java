@@ -11,7 +11,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Queue;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class MathUtilsTest {
@@ -50,7 +51,7 @@ class MathUtilsTest {
     @ParameterizedTest
     @MethodSource("by.upmebel.upmecutfile.util.UtilTestDataFactory#getArgumentsForPerformOperationTest")
     void shouldReturnExpressionResult_whenPerformOperation_givenValidArguments(
-            MathOperator operator, double num1, double num2, double expected){
+            MathOperator operator, double num1, double num2, double expected) {
         //given (parametrized test)
 
         //when
@@ -63,7 +64,7 @@ class MathUtilsTest {
     @ParameterizedTest
     @MethodSource("by.upmebel.upmecutfile.util.UtilTestDataFactory#getArgumentsForCalculateOperationResultTest")
     void shouldReturnOperationsResult_whenCalculateOperationResult_givenOperations(
-            Queue<MathOperation> operations, double expected){
+            Queue<MathOperation> operations, double expected) {
         //given (parametrized test)
 
         //when

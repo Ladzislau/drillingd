@@ -1,9 +1,9 @@
 package by.upmebel.upmecutfile.mapper;
 
 import by.upmebel.upmecutfile.domain.Hole;
-import by.upmebel.upmecutfile.web.dto.request.hole.CreateHoleRequest;
-import by.upmebel.upmecutfile.web.dto.request.hole.UpdateHoleRequest;
-import by.upmebel.upmecutfile.web.dto.response.hole.HoleInfo;
+import by.upmebel.upmecutfile.web.dto.hole.CreateHoleRequest;
+import by.upmebel.upmecutfile.web.dto.hole.UpdateHoleRequest;
+import by.upmebel.upmecutfile.web.dto.hole.HoleResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -24,7 +24,7 @@ public interface HoleMapper {
     @Mapping(target = "elementSide", ignore = true)
     Hole map(UpdateHoleRequest request);
 
-    HoleInfo map(Hole hole);
+    HoleResponse map(Hole hole);
 
-    List<HoleInfo> map(List<Hole> holes);
+    List<HoleResponse> map(List<Hole> holes);
 }

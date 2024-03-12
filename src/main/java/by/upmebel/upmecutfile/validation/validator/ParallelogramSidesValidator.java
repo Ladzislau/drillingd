@@ -1,7 +1,7 @@
 package by.upmebel.upmecutfile.validation.validator;
 
 import by.upmebel.upmecutfile.validation.annotation.ParallelogramSides;
-import by.upmebel.upmecutfile.web.dto.request.side.ElementSideRequest;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideRequest;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package by.upmebel.upmecutfile.web.dto.request.side;
+package by.upmebel.upmecutfile.web.dto.side;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Positive;

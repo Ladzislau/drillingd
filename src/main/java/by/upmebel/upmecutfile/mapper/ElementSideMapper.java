@@ -1,8 +1,8 @@
 package by.upmebel.upmecutfile.mapper;
 
 import by.upmebel.upmecutfile.domain.ElementSide;
-import by.upmebel.upmecutfile.web.dto.request.side.ElementSideRequest;
-import by.upmebel.upmecutfile.web.dto.response.side.ElementSideInfo;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideResponse;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -18,8 +18,8 @@ public interface ElementSideMapper {
     ElementSide map(ElementSideRequest request);
 
     @Mapping(target = "holes", source = "holes")
-    ElementSideInfo map(ElementSide side);
+    ElementSideResponse map(ElementSide side);
 
-    List<ElementSideInfo> map(List<ElementSide> sides);
+    List<ElementSideResponse> map(List<ElementSide> sides);
 
 }

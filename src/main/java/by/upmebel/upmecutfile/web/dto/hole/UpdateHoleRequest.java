@@ -1,11 +1,10 @@
-package by.upmebel.upmecutfile.web.dto.request.hole;
+package by.upmebel.upmecutfile.web.dto.hole;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 
-public record CreateHoleRequest(
-
+public record UpdateHoleRequest(
         @Schema(
                 description = "Диаметр отверстия",
                 example = "10.5"
@@ -47,5 +46,4 @@ public record CreateHoleRequest(
         )
         @Pattern(regexp = "(\\s*([LlBbHh]|(\\d+(\\.\\d+)?))(\\s*[+\\-*/]\\s*([LlBbHh]|(\\d+(\\.\\d+)?))\\s*)*)$")
         String coordinateByBreadth) {
-
 }

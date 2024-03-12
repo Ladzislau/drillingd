@@ -11,8 +11,8 @@ import by.upmebel.upmecutfile.service.ElementService;
 import by.upmebel.upmecutfile.util.ElementSideUtils;
 import by.upmebel.upmecutfile.web.dto.element.CreateElementRequest;
 import by.upmebel.upmecutfile.web.dto.element.UpdateElementRequest;
-import by.upmebel.upmecutfile.web.dto.response.element.ElementInfo;
-import by.upmebel.upmecutfile.web.dto.response.element.ElementsPageResponse;
+import by.upmebel.upmecutfile.web.dto.element.ElementResponse;
+import by.upmebel.upmecutfile.web.dto.element.ElementsPageResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -36,7 +36,7 @@ public class ElementServiceImpl implements ElementService {
 
     @Override
     @Transactional(readOnly = true)
-    public ElementInfo getElementById(Long elementId) {
+    public ElementResponse getElementById(Long elementId) {
         Element element = elementRepository.findByIdWithSides(elementId)
                 .orElseThrow(() -> new ElementNotFoundException(elementId));
         elementSideRepository.findAllByElementIdWithHoles(elementId);
@@ -58,7 +58,7 @@ public class ElementServiceImpl implements ElementService {
 
     @Override
     @Transactional
-    public ElementInfo createElement(CreateElementRequest request) {
+    public ElementResponse createElement(CreateElementRequest request) {
         Element element = elementMapper.map(request);
 
         List<ElementSide> sides = element.getSides();
@@ -72,7 +72,7 @@ public class ElementServiceImpl implements ElementService {
 
     @Override
     @Transactional
-    public ElementInfo updateElement(Long elementId, UpdateElementRequest request) {
+    public ElementResponse updateElement(Long elementId, UpdateElementRequest request) {
         Element oldElement = elementRepository.findByIdWithSides(elementId)
                 .orElseThrow(() -> new ElementNotFoundException(elementId));
         Queue<Long> updatedSidesIds = oldElement.getSides().stream()

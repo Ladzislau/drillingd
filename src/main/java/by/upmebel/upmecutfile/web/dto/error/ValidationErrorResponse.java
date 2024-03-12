@@ -1,4 +1,4 @@
-package by.upmebel.upmecutfile.web.dto.response.error;
+package by.upmebel.upmecutfile.web.dto.error;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

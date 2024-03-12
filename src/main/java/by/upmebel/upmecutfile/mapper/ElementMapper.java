@@ -3,8 +3,8 @@ package by.upmebel.upmecutfile.mapper;
 import by.upmebel.upmecutfile.domain.Element;
 import by.upmebel.upmecutfile.web.dto.element.CreateElementRequest;
 import by.upmebel.upmecutfile.web.dto.element.UpdateElementRequest;
-import by.upmebel.upmecutfile.web.dto.response.element.ElementInfo;
-import by.upmebel.upmecutfile.web.dto.response.element.ElementsPageResponse;
+import by.upmebel.upmecutfile.web.dto.element.ElementResponse;
+import by.upmebel.upmecutfile.web.dto.element.ElementsPageResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.data.domain.Page;
@@ -23,9 +23,9 @@ public interface ElementMapper {
     @Mapping(target = "id", ignore = true)
     Element map(UpdateElementRequest request);
 
-    ElementInfo map(Element element);
+    ElementResponse map(Element element);
 
-    List<ElementInfo> map(List<Element> elements);
+    List<ElementResponse> map(List<Element> elements);
 
     default ElementsPageResponse map(Page<Element> elementsPage) {
         List<Element> elements = elementsPage.getContent();
@@ -35,9 +35,9 @@ public interface ElementMapper {
         int totalPages = elementsPage.getTotalPages();
         long totalElements = elementsPage.getTotalElements();
 
-        List<ElementInfo> elementInfos = map(elements);
+        List<ElementResponse> elementResponses = map(elements);
 
-        return new ElementsPageResponse(pageNumber, pageSize, totalPages, totalElements, elementInfos);
+        return new ElementsPageResponse(pageNumber, pageSize, totalPages, totalElements, elementResponses);
     }
 
 }

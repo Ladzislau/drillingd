@@ -1,9 +1,9 @@
 package by.upmebel.upmecutfile.mapper;
 
 import by.upmebel.upmecutfile.domain.Hole;
-import by.upmebel.upmecutfile.web.dto.request.hole.CreateHoleRequest;
-import by.upmebel.upmecutfile.web.dto.request.hole.UpdateHoleRequest;
-import by.upmebel.upmecutfile.web.dto.response.hole.HoleInfo;
+import by.upmebel.upmecutfile.web.dto.hole.CreateHoleRequest;
+import by.upmebel.upmecutfile.web.dto.hole.HoleResponse;
+import by.upmebel.upmecutfile.web.dto.hole.UpdateHoleRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,11 +76,11 @@ class HoleMapperTest {
         double coordinateByBreadth = 12.5;
         Hole hole = new Hole(id, diameter, depth, drillingEntrySpeed, drillingExitSpeed,
                 coordinateByLength, coordinateByBreadth, null);
-        HoleInfo expected = new HoleInfo(id, diameter, depth, drillingEntrySpeed,
+        HoleResponse expected = new HoleResponse(id, diameter, depth, drillingEntrySpeed,
                 drillingExitSpeed, coordinateByLength, coordinateByBreadth);
 
         //when
-        HoleInfo actual = holeMapper.map(hole);
+        HoleResponse actual = holeMapper.map(hole);
 
         //then
         assertThat(actual).isEqualTo(expected);
@@ -103,14 +103,14 @@ class HoleMapperTest {
                         coordinateByLength, coordinateByBreadth, null)
         );
         var expected = List.of(
-                new HoleInfo(1L, 1d, 1d, 1, 1,
+                new HoleResponse(1L, 1d, 1d, 1, 1,
                         1d, 1d),
-                new HoleInfo(id, diameter, depth, drillingEntrySpeed, drillingExitSpeed,
+                new HoleResponse(id, diameter, depth, drillingEntrySpeed, drillingExitSpeed,
                         coordinateByLength, coordinateByBreadth)
         );
 
         //when
-        List<HoleInfo> actual = holeMapper.map(holeList);
+        List<HoleResponse> actual = holeMapper.map(holeList);
 
         //then
         assertAll(

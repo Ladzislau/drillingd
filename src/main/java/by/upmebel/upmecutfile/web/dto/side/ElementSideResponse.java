@@ -1,11 +1,11 @@
-package by.upmebel.upmecutfile.web.dto.response.side;
+package by.upmebel.upmecutfile.web.dto.side;
 
-import by.upmebel.upmecutfile.web.dto.response.hole.HoleInfo;
+import by.upmebel.upmecutfile.web.dto.hole.HoleResponse;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.List;
 
-public record ElementSideInfo(
+public record ElementSideResponse(
 
         @Schema(
                 description = "ID стороны детали",
@@ -28,6 +28,6 @@ public record ElementSideInfo(
         @Schema(
                 description = "Список отверстий, расположенных на стороне"
         )
-        List<HoleInfo> holes) {
+        List<HoleResponse> holes) {
 
 }

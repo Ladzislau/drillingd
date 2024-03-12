@@ -1,8 +1,8 @@
 package by.upmebel.upmecutfile.service;
 
-import by.upmebel.upmecutfile.web.dto.response.side.ElementSideInfo;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideResponse;
 
 public interface ElementSideService {
 
-    ElementSideInfo getSideByIds(Long elementId, Long sideId);
+    ElementSideResponse getSideByIds(Long elementId, Long sideId);
 }

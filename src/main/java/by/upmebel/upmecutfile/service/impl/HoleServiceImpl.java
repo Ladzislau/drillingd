@@ -14,9 +14,9 @@ import by.upmebel.upmecutfile.service.HoleService;
 import by.upmebel.upmecutfile.util.CoordinateUtils;
 import by.upmebel.upmecutfile.util.ElementSideUtils;
 import by.upmebel.upmecutfile.util.MathUtils;
-import by.upmebel.upmecutfile.web.dto.request.hole.CreateHoleRequest;
-import by.upmebel.upmecutfile.web.dto.request.hole.UpdateHoleRequest;
-import by.upmebel.upmecutfile.web.dto.response.hole.HoleInfo;
+import by.upmebel.upmecutfile.web.dto.hole.CreateHoleRequest;
+import by.upmebel.upmecutfile.web.dto.hole.UpdateHoleRequest;
+import by.upmebel.upmecutfile.web.dto.hole.HoleResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +32,7 @@ public class HoleServiceImpl implements HoleService {
     private final HoleMapper holeMapper;
 
     @Override
-    public HoleInfo getHoleByIds(Long elementId, Long sideId, Long holeId) {
+    public HoleResponse getHoleByIds(Long elementId, Long sideId, Long holeId) {
         Hole hole = holeRepository.findByHoleIdAndSideIdAndElementId(holeId, sideId, sideId)
                 .orElseThrow(() -> new HoleNotFoundException("Отверстие не найдено, проверьте правильность id детали, стороны или отверстия"));
 
@@ -41,7 +41,7 @@ public class HoleServiceImpl implements HoleService {
 
     @Override
     @Transactional
-    public HoleInfo createHole(Long elementId, Long sideId, CreateHoleRequest request) {
+    public HoleResponse createHole(Long elementId, Long sideId, CreateHoleRequest request) {
         ElementSide relatedSide = elementSideRepository.findBySideIdAndElementIdWithElement(sideId, elementId)
                 .orElseThrow(() -> new SideNotFoundException("Сторона для размещения отверстия не найдена. Проверьте правильность id элемента или стороны"));
         double heightBySide = ElementSideUtils.getHeightBySide(relatedSide);
@@ -68,7 +68,7 @@ public class HoleServiceImpl implements HoleService {
 
     @Override
     @Transactional
-    public HoleInfo updateHole(Long elementId, Long sideId, Long holeId, UpdateHoleRequest request) {
+    public HoleResponse updateHole(Long elementId, Long sideId, Long holeId, UpdateHoleRequest request) {
         ElementSide relatedSide = elementSideRepository.findBySideIdAndElementIdWithElement(sideId, elementId)
                 .orElseThrow(() -> new SideNotFoundException("Сторона для размещения отверстия не найдена. Проверьте правильность id элемента или стороны)"));
         holeRepository.findByHoleIdAndSideIdWithSide(holeId, sideId)

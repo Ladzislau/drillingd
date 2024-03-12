@@ -1,8 +1,8 @@
-package by.upmebel.upmecutfile.web.dto.request.element;
+package by.upmebel.upmecutfile.web.dto.element;
 
 import by.upmebel.upmecutfile.validation.annotation.FixedListSize;
 import by.upmebel.upmecutfile.validation.annotation.ParallelogramSides;
-import by.upmebel.upmecutfile.web.dto.request.side.ElementSideRequest;
+import by.upmebel.upmecutfile.web.dto.side.ElementSideRequest;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
