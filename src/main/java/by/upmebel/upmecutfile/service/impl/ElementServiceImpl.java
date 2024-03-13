@@ -10,9 +10,9 @@ import by.upmebel.upmecutfile.repository.HoleRepository;
 import by.upmebel.upmecutfile.service.ElementService;
 import by.upmebel.upmecutfile.util.ElementSideUtils;
 import by.upmebel.upmecutfile.web.dto.element.CreateElementRequest;
-import by.upmebel.upmecutfile.web.dto.element.UpdateElementRequest;
 import by.upmebel.upmecutfile.web.dto.element.ElementResponse;
 import by.upmebel.upmecutfile.web.dto.element.ElementsPageResponse;
+import by.upmebel.upmecutfile.web.dto.element.UpdateElementRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -66,8 +66,8 @@ public class ElementServiceImpl implements ElementService {
         completeMissingSides(sides);
 
         element.setCreatedAt(new Date());
-        Element savedElement = elementRepository.save(element);
-        return elementMapper.map(savedElement);
+        elementRepository.save(element);
+        return elementMapper.map(element);
     }
 
     @Override
@@ -92,8 +92,8 @@ public class ElementServiceImpl implements ElementService {
         updatedElement.setId(elementId);
         updatedElement.setCreatedAt(oldElement.getCreatedAt());
 
-        elementRepository.save(updatedElement);
         holeRepository.deleteByElementId(elementId);
+        elementRepository.save(updatedElement);
         return elementMapper.map(updatedElement);
     }
 

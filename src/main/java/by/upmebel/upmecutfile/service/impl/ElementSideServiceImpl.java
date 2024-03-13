@@ -19,7 +19,7 @@ public class ElementSideServiceImpl implements ElementSideService {
     @Override
     public ElementSideResponse getSideByIds(Long elementId, Long sideId) {
         ElementSide side = elementSideRepository.findBySideIdAndElementIdWithHoles(elementId, sideId)
-                .orElseThrow(() -> new SideNotFoundException("Сторона детали не найдена. Проверьте правильность id детали и стороны"));
+                .orElseThrow(() -> new SideNotFoundException("Проверьте правильность id детали и стороны"));
 
         return elementSideMapper.map(side);
     }

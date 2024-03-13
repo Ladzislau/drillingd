@@ -3,19 +3,17 @@ package by.upmebel.upmecutfile.exception;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-import java.util.Date;
-
 @Getter
 public class CustomException extends RuntimeException {
 
+    private String title;
+
     private HttpStatus status;
 
-    private Date timestamp;
-
-    public CustomException(HttpStatus status, String message) {
+    public CustomException(String title, String message, HttpStatus status) {
         super(message);
+        this.title = title;
         this.status = status;
-        this.timestamp = new Date();
     }
 
 }

@@ -1,6 +1,7 @@
 package by.upmebel.upmecutfile.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.util.Objects;
@@ -26,8 +27,10 @@ public class Hole {
 
     private int drillingExitSpeed;
 
+    @Positive
     private double coordinateByLength;
 
+    @Positive
     private double coordinateByBreadth;
 
     @ManyToOne(fetch = FetchType.LAZY)

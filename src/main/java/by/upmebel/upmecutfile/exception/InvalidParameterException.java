@@ -1,16 +1,16 @@
 package by.upmebel.upmecutfile.exception;
 
-import org.springframework.http.HttpStatus;
+import lombok.Getter;
 
-public class InvalidParameterException extends CustomException {
+import java.util.Map;
 
-    private static final HttpStatus DEFAULT_STATUS = HttpStatus.BAD_REQUEST;
+@Getter
+public class InvalidParameterException extends RuntimeException {
 
-    public InvalidParameterException(String message) {
-        super(DEFAULT_STATUS, message);
-    }
+    private Map<String, String> parameterErrorMap;
 
-    public InvalidParameterException(HttpStatus status, String message) {
-        super(status, message);
+    public InvalidParameterException(Map<String, String> parameterErrorMap) {
+        super();
+        this.parameterErrorMap = parameterErrorMap;
     }
 }

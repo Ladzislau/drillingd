@@ -4,6 +4,8 @@ import by.upmebel.upmecutfile.domain.ElementSide;
 import by.upmebel.upmecutfile.domain.ElementSideParameter;
 import by.upmebel.upmecutfile.domain.Hole;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class CoordinateUtils {
@@ -23,13 +25,32 @@ public class CoordinateUtils {
                 .replace(HEIGHT_ABBREVIATION, height + "");
     }
 
-    public static boolean isCoordinatesValid(ElementSide side, Hole hole) {
+    public static Map<String, String> getCoordinatesErrors(ElementSide side, Hole hole) {
+        Map<String, String> coordinateErrorMap = new HashMap<>();
+
         double sideLength = side.getLength();
         double sideBreadth = side.getBreadth();
         double holeCoordinateByLength = hole.getCoordinateByLength();
         double holeCoordinateByBreadth = hole.getCoordinateByBreadth();
 
-        return (sideLength >= holeCoordinateByLength) && (sideBreadth >= holeCoordinateByBreadth);
+        if (sideLength <= holeCoordinateByLength) {
+            coordinateErrorMap.put("coordinateByLength",
+                    "Координата должна быть меньше длины стороны детали. Текущее значение: " + holeCoordinateByLength);
+        }
+        if (sideBreadth <= holeCoordinateByBreadth) {
+            coordinateErrorMap.put("coordinateByBreadth",
+                    "Координата должна быть меньше длины стороны детали. Текущее значение: " + holeCoordinateByBreadth);
+        }
+        if (holeCoordinateByLength <= 0) {
+            coordinateErrorMap.put("coordinateByLength",
+                    "Координата должна быть больше нуля. Текущее значение: " + holeCoordinateByLength);
+        }
+        if (holeCoordinateByBreadth <= 0) {
+            coordinateErrorMap.put("coordinateByBreadth",
+                    "Координата должна быть больше нуля. Текущее значение: " + holeCoordinateByLength);
+        }
+
+        return coordinateErrorMap;
     }
 
 }
